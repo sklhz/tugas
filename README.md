@@ -21,17 +21,6 @@ Lisensi
 
 Proyek ini dilisensikan di bawah Apache License 2.0.
 
-Penulis
-
-Zahra
-
-Mentari
-
-Dini
-
-Zaed
-
-
 Guru Pembimbing
 
 Pak Singgih
