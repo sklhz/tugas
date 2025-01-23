@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Berita | Kerajaan Kediri</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">Kediri</div>
+            <nav>
+                <a href="index.html#hero">Home</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="index.html#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Full Text Section -->
+    <section class="full-text-section">
+        <div class="background-overlay"></div> <!-- Overlay to add blur effect -->
+
+        <div class="content-wrapper">
+            <div class="card">
+                <h2 id="news-title">Loading...</h2>
+                <p id="news-content">Please wait...</p>
+                <a href="index.html#faq" class="btn-back">Kembali ke FAQ</a>
+            </div>
+
+            <!-- Additional Interactive Item (Optional) -->
+            <div class="more-info">
+                <h3>Additional Information</h3>
+                <p>Learn more about the rich history of the Kediri Kingdom, its cultural impact, and how it shaped Indonesia's history.</p>
+                <!-- "Learn More" Button that opens Google search automatically -->
+                <a href="#" class="btn-more-info" onclick="searchInfo()">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kediri Kingdom. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const newsId = urlParams.get('id');
+
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const newsItem = data.find(item => item.id == newsId);
+                    if (newsItem) {
+                        document.getElementById('news-title').innerText = newsItem.question;
+                        document.getElementById('news-content').innerText = newsItem.fullText;
+                    }
+                })
+                .catch(error => console.error('Error loading news:', error));
+        });
+
+        // Function to automatically search on Google
+        function searchInfo() {
+            const searchQuery = "Kediri Kingdom History";  // Ganti dengan kata kunci pencarian
+            const searchURL = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+            
+            // Membuka pencarian di browser
+            window.location.href = searchURL;
+        }
+    </script>
+</body>
+</html>
